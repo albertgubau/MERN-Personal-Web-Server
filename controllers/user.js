@@ -23,16 +23,20 @@ async function getUsers(req, res) {
     });
   }
 
-  let response = null;
+  let users = null;
 
   // If we are not adding active queryParam, we apply a normal getAll of all the users
   if (active === undefined) {
-    response = await User.find();
+    users = await User.find();
   } else {
-    response = await User.find({ active });
+    users = await User.find({ active });
   }
 
-  res.status(200).send(response);
+  if (!users) {
+    res.status(400).send({ msg: "Error while retrieving all the users" });
+  } else {
+    res.status(200).send(users);
+  }
 }
 
 async function createUser(req, res) {
