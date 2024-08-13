@@ -9,4 +9,6 @@ api.post("/menu/new", [md_auth.assureAuth], MenuController.createMenu);
 // We are not using authentification middleware because the menus ara available without authentification
 api.get("/menu/all", MenuController.getMenus);
 
+api.patch("/menu/:id", [md_auth.assureAuth], MenuController.updateMenu);
+
 module.exports = api;
