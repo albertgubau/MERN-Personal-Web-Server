@@ -21,10 +21,6 @@ async function createCourse(req, res) {
   }
 }
 
-// async function updateCourse(req, res) {}
-
-// async function deleteCourse(req, res) {}
-
 module.exports = {
   createCourse,
 };
