@@ -21,6 +21,22 @@ async function createCourse(req, res) {
   }
 }
 
+async function getCourses(req, res) {
+  try {
+    const courses = await Course.find();
+    if (courses) {
+      res.status(200).send(courses);
+    } else {
+      res.status(404).send({ msg: "Error while retrieving all the courses" });
+    }
+  } catch (error) {
+    res
+      .status(400)
+      .send({ msg: "Error while retrieving all the courses", error });
+  }
+}
+
 module.exports = {
   createCourse,
+  getCourses,
 };
