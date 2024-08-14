@@ -116,7 +116,7 @@ async function deleteUser(req, res) {
       res.status(404).send({ msg: "User not found" });
     }
   } catch (error) {
-    res.status(500).send({ msg: "Error deleting the user" });
+    res.status(500).send({ msg: "Error deleting the user", error });
   }
 }
 

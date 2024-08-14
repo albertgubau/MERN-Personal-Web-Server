@@ -11,4 +11,6 @@ api.get("/menu/all", MenuController.getMenus);
 
 api.patch("/menu/:id", [md_auth.assureAuth], MenuController.updateMenu);
 
+api.delete("/menu/:id", [md_auth.assureAuth], MenuController.deleteMenu);
+
 module.exports = api;

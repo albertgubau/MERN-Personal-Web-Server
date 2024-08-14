@@ -42,13 +42,28 @@ async function updateMenu(req, res) {
   try {
     const response = await Menu.findByIdAndUpdate({ _id: id }, menuData);
     if (response) {
-      res.status(200).send({ msg: "Menu updated correctly" });
+      res.status(200).send({ msg: "Menu updated successfully" });
     } else {
       res.status(404).send({ msg: "Menu not found" });
     }
   } catch (error) {
-    res.status(400).send({ msg: "Error while updating the menu" });
+    res.status(400).send({ msg: "Error while updating the menu", error });
   }
 }
 
-module.exports = { createMenu, getMenus, updateMenu };
+async function deleteMenu(req, res) {
+  const { id } = req.params;
+
+  try {
+    const response = await Menu.findByIdAndDelete({ _id: id });
+    if (response) {
+      res.status(200).send({ msg: "Menu deleted correctly" });
+    } else {
+      res.status(404).send({ msg: "Menu not found" });
+    }
+  } catch (error) {
+    res.status(400).send({ msg: "Error while removing the menu", error });
+  }
+}
+
+module.exports = { createMenu, getMenus, updateMenu, deleteMenu };
