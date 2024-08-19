@@ -11,5 +11,13 @@ api.post(
   [md_auth.assureAuth, md_upload],
   PostController.createPost
 );
+api.get("/posts/:path", PostController.getPostByPath);
+api.get("/posts", PostController.getPosts);
+api.patch(
+  "/posts/:id",
+  [md_auth.assureAuth, md_upload],
+  PostController.updatePost
+);
+api.delete("/posts/:id", [md_auth.assureAuth], PostController.deletePost);
 
 module.exports = api;

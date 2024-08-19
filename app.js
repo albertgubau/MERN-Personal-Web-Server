@@ -10,6 +10,7 @@ const userRoutes = require("./router/user");
 const menuRoutes = require("./router/menu");
 const courseRoutes = require("./router/course");
 const postRoutes = require("./router/post");
+const newsletterRoutes = require("./router/newsletter");
 
 // Configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,5 +28,6 @@ app.use(`/api/${process.env.API_VERSION}`, userRoutes);
 app.use(`/api/${process.env.API_VERSION}`, menuRoutes);
 app.use(`/api/${process.env.API_VERSION}`, courseRoutes);
 app.use(`/api/${process.env.API_VERSION}`, postRoutes);
+app.use(`/api/${process.env.API_VERSION}`, newsletterRoutes);
 
 module.exports = app;
