@@ -21,7 +21,7 @@ async function getMenus(req, res) {
 
   let menus = null;
 
-  if (active === undefined) {
+  if (active !== "true" && active !== "false") {
     menus = await Menu.find().sort({ order: "asc" });
   } else {
     menus = await Menu.find({ active }).sort({ order: "asc" });
